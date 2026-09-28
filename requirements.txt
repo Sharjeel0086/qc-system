@@ -1,0 +1,13 @@
+# Base program: no packages needed. tkinter, sqlite3 and hashlib ship with
+# Python itself.
+#
+# Camera features: webcam capture plus OpenCV QR/1-D support.
+# opencv-contrib-python is used because it contains OpenCV's barcode module.
+# The application also contains its own Code 39 decoder, so pyzbar/ZBar is
+# NOT required and no native Windows barcode DLL needs to be installed.
+opencv-contrib-python
+pillow
+
+# Optional OCR support for reading the printed serial number above a barcode.
+# This is only the Python wrapper; the actual Tesseract program is separate.
+pytesseract

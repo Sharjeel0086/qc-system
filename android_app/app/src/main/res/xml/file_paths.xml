@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path name="qc_photos" path="photos/" />
+    <files-path name="qc_internal_photos" path="photos/" />
+    <cache-path name="qc_cache_photos" path="photos/" />
+</paths>

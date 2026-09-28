@@ -1,0 +1,291 @@
+{
+  "_comment": "You do not need to edit this file by hand. Use Tools > Check sheet builder inside the program. This file is written automatically when you save there.",
+  "OQC": {
+    "name": "OQC Check Sheet",
+    "subtitle": "Outgoing quality control - finished LED unit",
+    "unit_fields": [
+      {
+        "id": "serial_number",
+        "label": "Serial number",
+        "required": true
+      },
+      {
+        "id": "main_board_no",
+        "label": "Main board number",
+        "required": true
+      },
+      {
+        "id": "model",
+        "label": "Model / size",
+        "required": true
+      },
+      {
+        "id": "panel_no",
+        "label": "Panel number",
+        "required": false
+      },
+      {
+        "id": "power_board_no",
+        "label": "Power board number",
+        "required": false
+      },
+      {
+        "id": "production_line",
+        "label": "Production line (serial pos 12-13)",
+        "required": false
+      },
+      {
+        "id": "lot_no",
+        "label": "Lot / batch number",
+        "required": false
+      },
+      {
+        "id": "remarks",
+        "label": "Remarks",
+        "required": false
+      },
+      {
+        "id": "material_code",
+        "label": "Material code (serial pos 1-11)",
+        "required": false
+      },
+      {
+        "id": "year_code",
+        "label": "Year of manufacture (serial pos 14)",
+        "required": false
+      },
+      {
+        "id": "month_code",
+        "label": "Month of manufacture (serial pos 15)",
+        "required": false
+      },
+      {
+        "id": "day_code",
+        "label": "Day of manufacture (serial pos 16)",
+        "required": false
+      },
+      {
+        "id": "unit_number",
+        "label": "Unit number (serial pos 17-20)",
+        "required": false
+      }
+    ],
+    "scan_targets": [
+      {
+        "id": "unit_qr",
+        "label": "Unit QR code",
+        "prompt": "Scan or verify the unit's serial number label",
+        "rule": {
+          "type": "fixed",
+          "trim": true,
+          "upper": true,
+          "slices": {
+            "serial_number": [
+              0,
+              20
+            ],
+            "material_code": [
+              0,
+              11
+            ],
+            "production_line": [
+              11,
+              13
+            ],
+            "year_code": [
+              13,
+              14
+            ],
+            "month_code": [
+              14,
+              15
+            ],
+            "day_code": [
+              15,
+              16
+            ],
+            "unit_number": [
+              16,
+              20
+            ]
+          }
+        }
+      },
+      {
+        "id": "board_qr",
+        "label": "Main board QR code",
+        "prompt": "Scan the QR code printed on the main board",
+        "rule": {
+          "type": "raw",
+          "target": "main_board_no",
+          "trim": true,
+          "upper": true
+        }
+      }
+    ],
+    "tests": [
+      "Appearance - cabinet and bezel",
+      "Appearance - screen surface and scratches",
+      "Label and barcode check",
+      "Accessories and packing list",
+      "Power on / boot time",
+      "Display uniformity - white screen",
+      "Display uniformity - black screen",
+      "Dead pixel / bright dot check",
+      "Colour bar pattern test",
+      "Backlight leakage test",
+      "Audio output - left and right",
+      "Remote control function test",
+      "HDMI input test",
+      "USB port and media playback",
+      "Menu and OSD function",
+      "Stand / wall mount fitting",
+      "High voltage / earth continuity test",
+      "Final packing condition"
+    ]
+  },
+  "AUDIT": {
+    "name": "Audit Check Sheet",
+    "subtitle": "Line audit sampling",
+    "unit_fields": [
+      {
+        "id": "serial_number",
+        "label": "Serial number",
+        "required": true
+      },
+      {
+        "id": "main_board_no",
+        "label": "Main board number",
+        "required": true
+      },
+      {
+        "id": "model",
+        "label": "Model / size",
+        "required": true
+      },
+      {
+        "id": "audit_stage",
+        "label": "Audit stage",
+        "required": false
+      },
+      {
+        "id": "shift",
+        "label": "Shift",
+        "required": false
+      },
+      {
+        "id": "remarks",
+        "label": "Remarks",
+        "required": false
+      }
+    ],
+    "scan_targets": [
+      {
+        "id": "unit_qr",
+        "label": "Unit QR code",
+        "prompt": "Scan the unit QR code",
+        "rule": {
+          "type": "delimited",
+          "separator": ";",
+          "pair_separator": ":",
+          "trim": true,
+          "map": {
+            "SN": "serial_number",
+            "MODEL": "model"
+          }
+        }
+      },
+      {
+        "id": "board_qr",
+        "label": "Main board QR code",
+        "prompt": "Scan the main board QR code",
+        "rule": {
+          "type": "raw",
+          "target": "main_board_no",
+          "upper": true
+        }
+      }
+    ],
+    "tests": [
+      "Workmanship and assembly check",
+      "Screw torque and fitting",
+      "Cable routing and connector seating",
+      "Sticker position and printing quality",
+      "Carton and printing check",
+      "Function test - full cycle",
+      "Ageing test result verification",
+      "Safety test record verification"
+    ]
+  },
+  "IQC": {
+    "name": "IQC Check Sheet",
+    "subtitle": "Incoming material inspection",
+    "unit_fields": [
+      {
+        "id": "serial_number",
+        "label": "Serial / reference number",
+        "required": true
+      },
+      {
+        "id": "main_board_no",
+        "label": "Main board number",
+        "required": true
+      },
+      {
+        "id": "supplier",
+        "label": "Supplier",
+        "required": true
+      },
+      {
+        "id": "part_no",
+        "label": "Part number",
+        "required": false
+      },
+      {
+        "id": "lot_no",
+        "label": "Lot / batch number",
+        "required": false
+      },
+      {
+        "id": "remarks",
+        "label": "Remarks",
+        "required": false
+      }
+    ],
+    "scan_targets": [
+      {
+        "id": "carton_barcode",
+        "label": "Carton barcode",
+        "prompt": "Scan the barcode on the incoming carton",
+        "rule": {
+          "type": "split",
+          "separator": ",",
+          "trim": true,
+          "map": {
+            "0": "serial_number",
+            "1": "part_no",
+            "2": "lot_no"
+          }
+        }
+      },
+      {
+        "id": "board_qr",
+        "label": "Main board QR code",
+        "prompt": "Scan the main board QR code",
+        "rule": {
+          "type": "raw",
+          "target": "main_board_no",
+          "upper": true
+        }
+      }
+    ],
+    "tests": [
+      "Packing condition on arrival",
+      "Quantity verification",
+      "Part marking and label check",
+      "Visual defect check",
+      "Dimension check",
+      "Electrical function sample test"
+    ]
+  }
+}
